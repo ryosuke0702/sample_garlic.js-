@@ -1,0 +1,26 @@
+.container
+
+  .row
+    .col-md-6.col-md-offset-3
+      = form_with(model: user, local: true, data: { persist: 'garlic' }) do |form|
+        .form-group
+
+          div= form.text_field :name, class: 'form-control', placeholder: '名前'
+        .form-group
+
+          div= form.number_field :age, class: 'form-control', placeholder: '年齢'
+
+        .form-group.input-group data-target-input="nearest"
+
+          = form.text_field :date, id: "date", class: "form-control datepicker", data: { target: '#date'}, placeholder: '誕生日'
+          .input-group-append data-target="#date" data-toggle="datetimepicker"
+            .input-group-text
+              i.fa.fa-calendar
+
+        /.field
+          = form.label :date
+          .date-picker
+          = form.text_field :date
+
+        .actions
+          = form.submit

@@ -1,0 +1,36 @@
+.container
+  - @activities.each do |activity|
+    = link_to activity.owner.name, activity.owner if activity.owner
+    = link_to activity.trackable.name, activity.trackable
+
+p#notice
+  = notice
+h1
+  | Users
+table
+  thead
+    tr
+      th
+        | Name
+      th
+        | Age
+      th
+        | Birthday
+      th[colspan="3"]
+  tbody
+    - @users.each do |user|
+      tr
+        td
+          = user.name
+        td
+          = user.age
+        td
+          = user.date
+        td
+          = link_to 'Show', user
+        td
+          = link_to 'Edit', edit_user_path(user)
+        td
+          = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New User', new_user_path ,data: {"turbolinks"=>false}

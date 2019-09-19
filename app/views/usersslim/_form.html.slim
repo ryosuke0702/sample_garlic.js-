@@ -1,0 +1,9 @@
+= form_with(model: user, local: true, data: { persist: 'garlic' }) do |form|
+  .field
+    = form.label :name
+    = form.text_field :name
+  .field
+    = form.label :age
+    = form.number_field :age
+  .actions
+    = form.submit
